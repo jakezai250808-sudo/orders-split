@@ -1,0 +1,4 @@
+[
+  {"id":"m1","model":"PB-A01","thickness":18,"color":"暖白","supplier":"千年舟","cost":120,"edgeBanding":"1.0mm PVC"},
+  {"id":"m2","model":"PB-B03","thickness":9,"color":"胡桃","supplier":"兔宝宝","cost":90,"edgeBanding":"0.8mm ABS"}
+]
