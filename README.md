@@ -6,6 +6,8 @@ pnpm install
 pnpm dev
 ```
 
+默认本地开发端口为 `5174`。
+
 ## 技术栈
 - Vue 3 + TypeScript + Vite
 - Pinia + Vue Router
