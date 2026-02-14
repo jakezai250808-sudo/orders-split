@@ -1,0 +1,7 @@
+{
+  "o1": {
+    "id":"o1","orderNo":"ORD-2026-001",
+    "rooms":[{"id":"r1","name":"主卧","status":"warn"},{"id":"r2","name":"次卧","status":"ok"},{"id":"r3","name":"厨房","status":"error"}],
+    "timeline":[{"time":"02-08 12:00","title":"订单创建","desc":"来源CRM"},{"time":"02-09 09:00","title":"量房完成","desc":"上传户型"},{"time":"02-10 08:30","title":"进入拆单","desc":"V2"}]
+  }
+}

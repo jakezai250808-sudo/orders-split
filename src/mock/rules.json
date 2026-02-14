@@ -1,0 +1,4 @@
+[
+  {"id":"r1","field":"panel.thickness","operator":">=","threshold":"9","action":"报错","enabled":true,"priority":1},
+  {"id":"r2","field":"door.height","operator":"<=","threshold":"2400","action":"警告","enabled":true,"priority":2}
+]

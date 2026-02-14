@@ -1,0 +1,36 @@
+{
+  "tree": [
+    {"id":"r1","label":"主卧","type":"room","status":"warn","children":[
+      {"id":"c1","label":"衣柜A","type":"cabinet","status":"warn","children":[
+        {"id":"m1","label":"模块1","type":"module","status":"ok","children":[
+          {"id":"p1","label":"侧板","type":"panel","status":"ok"},
+          {"id":"p2","label":"背板","type":"panel","status":"warn"},
+          {"id":"h1","label":"铰链","type":"hardware","status":"ok"}
+        ]}
+      ]}
+    ]}
+  ],
+  "panels": [
+    {"id":"p1","name":"侧板","width":600,"height":2400,"material":"颗粒板"},
+    {"id":"p2","name":"背板","width":580,"height":2380,"material":"多层板"}
+  ],
+  "rules": [
+    {"id":"rr1","name":"背板厚度下限","level":"warning","targetNodeId":"p2","message":"当前厚度不足 9mm","suggestion":"推荐改为9mm"},
+    {"id":"rr2","name":"铰链承重校验","level":"pass","targetNodeId":"h1","message":"通过"},
+    {"id":"rr3","name":"门板高度上限","level":"fail","targetNodeId":"p1","message":"高度超出加工上限","suggestion":"建议分段"}
+  ],
+  "plans": [
+    {"id":"plan1","name":"保守","changes":["背板厚度 6->9","门板分段2块"],"costDelta":120,"riskScore":15},
+    {"id":"plan2","name":"平衡","changes":["背板厚度 8->9","优化开孔位"],"costDelta":80,"riskScore":25},
+    {"id":"plan3","name":"极致","changes":["保持薄板","更换铰链型号"],"costDelta":40,"riskScore":61}
+  ],
+  "files": [
+    {"id":"f1","name":"主卧衣柜.dwg","type":"CAD","updatedAt":"2026-02-10"},
+    {"id":"f2","name":"主卧衣柜.glb","type":"3D","updatedAt":"2026-02-10"},
+    {"id":"f3","name":"量房点云.las","type":"MEASURE","updatedAt":"2026-02-09"}
+  ],
+  "versions": [
+    {"id":"v1","name":"V1","frozen":true,"createdAt":"2026-02-08"},
+    {"id":"v2","name":"V2","frozen":false,"createdAt":"2026-02-10"}
+  ]
+}

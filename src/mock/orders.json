@@ -1,0 +1,4 @@
+[
+  {"id":"o1","orderNo":"ORD-2026-001","customer":"张三","community":"金茂府","currentVersion":"V2","status":"拆单中","risk":"柜体深度冲突","owner":"李工","updatedAt":"2026-02-10 10:20","slaLeftHours":18},
+  {"id":"o2","orderNo":"ORD-2026-002","customer":"王敏","community":"云栖苑","currentVersion":"V1","status":"待审核","risk":"无","owner":"赵工","updatedAt":"2026-02-11 09:40","slaLeftHours":42}
+]
