@@ -1,5 +1,19 @@
 export type CommonStatus = 'draft' | 'running' | 'warning' | 'failed' | 'done';
 
+export type OrderApprovalStatus =
+  | 'DRAFT'
+  | 'MEASURED'
+  | 'MATERIALS_PENDING'
+  | 'MATERIALS_APPROVING'
+  | 'MATERIALS_APPROVED'
+  | 'DELIVERY_PENDING'
+  | 'DELIVERY_APPROVING'
+  | 'DELIVERY_APPROVED'
+  | 'INSTALL_PENDING'
+  | 'INSTALL_APPROVING'
+  | 'INSTALL_APPROVED'
+  | 'SIGNED';
+
 export interface OrderItem {
   id: string;
   orderNo: string;
@@ -11,6 +25,130 @@ export interface OrderItem {
   owner: string;
   updatedAt: string;
   slaLeftHours: number;
+  address?: string;
+  principal?: string;
+  measuredAt?: string;
+  expectedDeliveryAt?: string;
+  approvalStatus?: OrderApprovalStatus;
+}
+
+export type ApprovalNodeType = 'MEASURE' | 'MATERIALS' | 'DELIVERY' | 'INSTALL' | 'SIGN';
+export type ApprovalNodeStatus = 'PENDING' | 'APPROVING' | 'APPROVED' | 'REJECTED';
+export type ApproverDecision = 'PENDING' | 'APPROVED' | 'REJECTED';
+
+export interface Approver {
+  id: string;
+  name: string;
+  role: string;
+  decision: ApproverDecision;
+  comment?: string;
+  decidedAt?: string;
+  isAdded?: boolean;
+}
+
+export interface Attachment {
+  id: string;
+  nodeType: ApprovalNodeType;
+  fileName: string;
+  fileSize: number;
+  mimeType: string;
+  uploader: string;
+  uploadedAt: string;
+  remark?: string;
+  previewUrl?: string;
+}
+
+export interface ApprovalRecord {
+  id: string;
+  orderId: string;
+  nodeType: ApprovalNodeType;
+  action:
+    | 'SAVE_DRAFT'
+    | 'SUBMIT'
+    | 'APPROVE'
+    | 'REJECT'
+    | 'ROLLBACK'
+    | 'ADD_SIGNER'
+    | 'CC'
+    | 'UPLOAD_ATTACHMENT'
+    | 'FINAL_SIGN';
+  operator: string;
+  summary: string;
+  opinion?: string;
+  createdAt: string;
+  submissionNo?: number;
+}
+
+export interface MaterialsForm {
+  bomVersion: string;
+  itemCount: number | null;
+  estimatedCost: number | null;
+  remark?: string;
+}
+
+export interface DeliveryForm {
+  productionStartDate: string;
+  factoryDate: string;
+  logisticsDate: string;
+  installStartDate: string;
+  expectedFinishDate: string;
+  riskNote?: string;
+}
+
+export interface InstallDailyPlan {
+  date: string;
+  workers: number | null;
+  task: string;
+}
+
+export interface InstallForm {
+  teamName: string;
+  estimatedDurationDays: number | null;
+  dailySchedules: InstallDailyPlan[];
+  siteConditions: string[];
+}
+
+export interface SignForm {
+  contractRemark?: string;
+}
+
+export interface ApprovalNode {
+  type: ApprovalNodeType;
+  title: string;
+  status: ApprovalNodeStatus;
+  requiredAttachments: boolean;
+  attachments: Attachment[];
+  approvers: Approver[];
+  ccUsers: string[];
+  submitter?: string;
+  submissionCount: number;
+  lastSubmittedAt?: string;
+  rejectionReason?: string;
+  timeoutWarning?: boolean;
+  form: MaterialsForm | DeliveryForm | InstallForm | SignForm | Record<string, never>;
+}
+
+export interface DeliverableSummary {
+  nodeType: ApprovalNodeType;
+  nodeTitle: string;
+  count: number;
+  latestUploadedAt?: string;
+}
+
+export interface ApprovalFlow {
+  orderId: string;
+  milestones: {
+    measuredAt: string;
+    expectedDeliveryAt: string;
+  };
+  nodes: ApprovalNode[];
+  records: ApprovalRecord[];
+}
+
+export interface UserOption {
+  id: string;
+  name: string;
+  role: string;
 }
 
 export interface RoomItem {
