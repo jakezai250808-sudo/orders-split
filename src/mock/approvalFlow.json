@@ -1,0 +1,32 @@
+{
+  "o2": {
+    "orderId": "o2",
+    "milestones": { "measuredAt": "2026-02-10 18:30", "expectedDeliveryAt": "2026-03-12" },
+    "nodes": [],
+    "records": []
+  },
+  "o3": {
+    "orderId": "o3",
+    "milestones": { "measuredAt": "2026-02-11 15:00", "expectedDeliveryAt": "2026-03-15" },
+    "nodes": [],
+    "records": []
+  },
+  "o4": {
+    "orderId": "o4",
+    "milestones": { "measuredAt": "2026-02-09 09:40", "expectedDeliveryAt": "2026-03-16" },
+    "nodes": [],
+    "records": []
+  },
+  "o5": {
+    "orderId": "o5",
+    "milestones": { "measuredAt": "2026-02-08 13:10", "expectedDeliveryAt": "2026-03-05" },
+    "nodes": [],
+    "records": []
+  },
+  "o6": {
+    "orderId": "o6",
+    "milestones": { "measuredAt": "2026-02-02 10:20", "expectedDeliveryAt": "2026-02-28" },
+    "nodes": [],
+    "records": []
+  }
+}
